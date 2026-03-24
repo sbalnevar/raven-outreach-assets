@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 AI Workflows Saving 10-15 Hours Per Week | Raven Labs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #f8f8f8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header */
+        .header-bar {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a00e1;
+            letter-spacing: -0.5px;
+        }
+
+        /* Gradient Hero */
+        .hero {
+            background: linear-gradient(135deg, #4a00e1 0%, #6400E1 33%, #7900E1 66%, #8300e2 100%);
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 14px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 50px 40px;
+        }
+
+        .intro-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 50px;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        /* Workflows Grid */
+        .workflows {
+            display: grid;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .workflow {
+            border-left: 4px solid #4a00e1;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .workflow-number {
+            position: absolute;
+            left: -18px;
+            top: -2px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #4a00e1, #8300e2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .workflow h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2c2c2c;
+        }
+
+        .workflow p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stat {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #4a00e1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4a00e1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f5f5f5, #fafafa);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2c2c2c;
+        }
+
+        .cta-section p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4a00e1, #8300e2);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 0, 225, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f8f8;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .header-bar {
+                padding: 16px 24px;
+            }
+
+            .hero {
+                padding: 40px 24px;
+            }
+
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .content {
+                padding: 32px 24px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 28px 24px;
+            }
+
+            .footer {
+                padding: 20px 24px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-bar">
+            <div class="logo-text">Raven Labs</div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>3 AI Workflows Saving 10-15 Hours Per Week</h1>
+            <p>Automate shift reporting, equipment maintenance tracking, compliance documentation, and ore assay data collection across multiple sites.</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <p class="intro-text">
+                Mining operators manage remote sites with manual shift reports, scattered maintenance logs, and compliance paperwork spread across email and spreadsheets. These three AI workflows centralise site intelligence, automate documentation, and keep equipment online—freeing your operations team for strategic oversight.
+            </p>
+
+            <div class="workflows">
+                <!-- Workflow 1 -->
+                <div class="workflow">
+                    <div class="workflow-number">1</div>
+                    <h3>Automated Shift Reports & Site Compliance Logging</h3>
+                    <p>Shift summaries, incident reports, and compliance checklists are captured automatically from voice notes, photos, and sensor data. No more handwritten reports or end-of-shift data entry. Every critical event is logged and flagged instantly.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">Time Saved Weekly</div>
+                            <div class="stat-value">5–6 hrs</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Compliance Records</div>
+                            <div class="stat-value">100% complete</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 2 -->
+                <div class="workflow">
+                    <div class="workflow-number">2</div>
+                    <h3>Predictive Equipment Maintenance & Downtime Prevention</h3>
+                    <p>AI monitors equipment telemetry, service logs, and operator notes to predict failures before they stop production. Maintenance schedules optimise around ore grades and extraction cycles, reducing unplanned downtime and extending asset life.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">Time Saved Weekly</div>
+                            <div class="stat-value">3–4 hrs</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Downtime Reduction</div>
+                            <div class="stat-value">–22%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 3 -->
+                <div class="workflow">
+                    <div class="workflow-number">3</div>
+                    <h3>Real-Time Ore Grade Tracking & Assay Automation</h3>
+                    <p>Assay results, grade logs, and recovery calculations are automatically parsed and matched to stockpile locations. Production forecasts and blending decisions update in real time—no more chasing lab reports or reconciling manual data.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">Time Saved Weekly</div>
+                            <div class="stat-value">2–3 hrs</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Data Accuracy</div>
+                            <div class="stat-value">98.8%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>See How It Works</h2>
+                <p>Let's discuss how these workflows improve site visibility and compress reporting cycles across your operations.</p>
+                <a href="mailto:ben@ravenlabs.com.au" class="cta-button">Start the Conversation</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2026 Raven Labs, Melbourne
+        </div>
+    </div>
+</body>
+</html>

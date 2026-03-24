@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 AI Workflows Saving 10-15 Hours Per Week | Raven Labs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #f8f8f8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header */
+        .header-bar {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a00e1;
+            letter-spacing: -0.5px;
+        }
+
+        /* Gradient Hero */
+        .hero {
+            background: linear-gradient(135deg, #4a00e1 0%, #6400E1 33%, #7900E1 66%, #8300e2 100%);
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 14px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 50px 40px;
+        }
+
+        .intro-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 50px;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        /* Workflows Grid */
+        .workflows {
+            display: grid;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .workflow {
+            border-left: 4px solid #4a00e1;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .workflow-number {
+            position: absolute;
+            left: -18px;
+            top: -2px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #4a00e1, #8300e2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .workflow h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2c2c2c;
+        }
+
+        .workflow p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stat {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #4a00e1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4a00e1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f5f5f5, #fafafa);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2c2c2c;
+        }
+
+        .cta-section p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4a00e1, #8300e2);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 0, 225, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f8f8;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .header-bar {
+                padding: 16px 24px;
+            }
+
+            .hero {
+                padding: 40px 24px;
+            }
+
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .content {
+                padding: 32px 24px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 28px 24px;
+            }
+
+            .footer {
+                padding: 20px 24px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-bar">
+            <div class="logo-text">Raven Labs</div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>3 AI Workflows Saving 10-15 Hours Per Week</h1>
+            <p>Automate timesheet accuracy, track design revisions, manage project milestones, and simplify client billing across multiple concurrent projects.</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <p class="intro-text">
+                Engineering directors juggle resource allocation, timesheet reconciliation, design revisions, and milestone tracking across portfolios. These three AI workflows eliminate manual tracking, ensure billable hours are captured accurately, and provide real-time project visibility—freeing your team to focus on design and delivery.
+            </p>
+
+            <div class="workflows">
+                <!-- Workflow 1 -->
+                <div class="workflow">
+                    <div class="workflow-number">1</div>
+                    <h3>Automated Timesheet & Resource Allocation</h3>
+                    <p>Timesheets are pre-filled from calendar events, task management systems, and design software usage. AI detects gaps and coding errors before submission. Resource utilisation across projects is visible in real time, surfacing bottlenecks before they delay deliverables.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">Time Saved Weekly</div>
+                            <div class="stat-value">4–5 hrs</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Billing Accuracy</div>
+                            <div class="stat-value">99.7%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 2 -->
+                <div class="workflow">
+                    <div class="workflow-number">2</div>
+                    <h3>Design Revision & Change Order Tracking</h3>
+                    <p>Every design revision, client request, and scope change is logged with timestamps and impact assessments. AI associates changes with cost and schedule implications. No more chasing revision history or arguing about who approved what.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">Time Saved Weekly</div>
+                            <div class="stat-value">3–4 hrs</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Change Order Speed</div>
+                            <div class="stat-value">–65% time</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 3 -->
+                <div class="workflow">
+                    <div class="workflow-number">3</div>
+                    <h3>Project Milestone Tracking & Client Billing</h3>
+                    <p>Milestones, completion percentages, and invoicing triggers are automatically updated from project activity. Invoices are generated on schedule with zero manual assembly. Clients see consistent, accurate billing tied to documented progress.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">Time Saved Weekly</div>
+                            <div class="stat-value">2–3 hrs</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Invoice Turnaround</div>
+                            <div class="stat-value">Same-day</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>See How It Works</h2>
+                <p>Let's discuss how these workflows improve project visibility and compress administrative overhead across your delivery teams.</p>
+                <a href="mailto:ben@ravenlabs.com.au" class="cta-button">Start the Conversation</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2026 Raven Labs, Melbourne
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Readiness Scorecard | Raven Labs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #4a00e1, #6400E1, #7900E1, #8300e2);
+    color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .logo-bar {
+    text-align: center;
+    padding: 20px;
+    background: #ffffff;
+    border-bottom: 2px solid #f5f5f5;
+  }
+
+  .logo-bar span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4a00e1;
+    letter-spacing: -0.5px;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .intro h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 12px;
+  }
+
+  .intro p {
+    font-size: 14px;
+    color: #555;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .question-block {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: #fafafa;
+    border-radius: 8px;
+    border-left: 4px solid #4a00e1;
+  }
+
+  .question-block h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 4px;
+  }
+
+  .question-block .q-label {
+    font-size: 12px;
+    color: #888888;
+    margin-bottom: 16px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .option-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .option-btn:hover {
+    border-color: #7900E1;
+    background: #f8f4ff;
+  }
+
+  .option-btn.selected {
+    border-color: #4a00e1;
+    background: #4a00e1;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .industry-select {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: #fafafa;
+    border-radius: 8px;
+    border-left: 4px solid #8300e2;
+  }
+
+  .industry-select h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .industry-select select {
+    width: 100%;
+    padding: 12px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  .industry-select select:focus {
+    outline: none;
+    border-color: #4a00e1;
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    background: #4a00e1;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-top: 20px;
+  }
+
+  .submit-btn:hover {
+    background: #6400E1;
+  }
+
+  .submit-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+  }
+
+  /* Results */
+  .results-section {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .score-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    border: 6px solid #4a00e1;
+  }
+
+  .score-circle .score-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #4a00e1;
+    line-height: 1;
+  }
+
+  .score-circle .score-label {
+    font-size: 12px;
+    color: #888888;
+    margin-top: 4px;
+  }
+
+  .score-level {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .score-desc {
+    font-size: 14px;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto 32px;
+  }
+
+  .recommendations {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .recommendations h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4a00e1;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .rec-card {
+    padding: 20px;
+    margin-bottom: 12px;
+    background: #fafafa;
+    border-radius: 8px;
+    border-left: 4px solid #4a00e1;
+  }
+
+  .rec-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 6px;
+  }
+
+  .rec-card p {
+    font-size: 12px;
+    color: #555;
+  }
+
+  .cta-section {
+    margin-top: 40px;
+    padding: 32px;
+    background: linear-gradient(135deg, #4a00e1, #8300e2);
+    border-radius: 12px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .cta-section h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .cta-section p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    background: #ffffff;
+    color: #4a00e1;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.9; }
+
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 12px;
+    color: #888888;
+  }
+
+  .progress-bar {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .progress-track {
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4a00e1, #8300e2);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+
+  .progress-text {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 20px; }
+    .container { padding: 24px 16px; }
+    .question-block { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-bar">
+  <span>Raven Labs</span>
+</div>
+
+<div class="header">
+  <h1>AI Readiness Scorecard</h1>
+  <p>Answer 8 questions about your business operations. Get your score and three specific recommendations in under 2 minutes.</p>
+</div>
+
+<div class="progress-bar" style="margin-top: 20px;">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-text" id="progressText">0 of 8 answered</div>
+</div>
+
+<div class="container" id="quizSection">
+  <div class="intro">
+    <h2>How ready is your business for AI?</h2>
+    <p>Most Australian businesses in construction, mining, engineering, and manufacturing are running 4-7 disconnected systems. This scorecard shows you exactly where you stand and what to do next.</p>
+  </div>
+
+  <div class="industry-select">
+    <h3>Your Industry</h3>
+    <select id="industrySelect">
+      <option value="">Select your industry</option>
+      <option value="construction">Construction</option>
+      <option value="mining">Mining</option>
+      <option value="engineering">Engineering</option>
+      <option value="manufacturing">Manufacturing</option>
+    </select>
+  </div>
+
+  <div class="question-block" data-q="0">
+    <h3>How many separate software systems does your business use for core operations?</h3>
+    <div class="q-label">Finance, operations, CRM, project management, HR, etc.</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 0)">1-2 systems, mostly integrated</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 0)">3-4 systems, some integration</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 0)">5-6 systems, minimal integration</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 0)">7+ systems, no integration</button>
+    </div>
+  </div>
+
+  <div class="question-block" data-q="1">
+    <h3>How much time does your team spend on manual data entry and transfer between systems each week?</h3>
+    <div class="q-label">Think spreadsheets, copy-paste, re-keying data</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 1)">Less than 2 hours</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 1)">2-5 hours</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 1)">5-15 hours</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 1)">15+ hours</button>
+    </div>
+  </div>
+
+  <div class="question-block" data-q="2">
+    <h3>How quickly can you access real-time financial and operational data?</h3>
+    <div class="q-label">Revenue, job costing, project margins, cash flow</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 2)">Instantly from a live dashboard</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 2)">Within a few hours, someone pulls a report</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 2)">Takes a day or more to compile</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 2)">We rely on end-of-month reports</button>
+    </div>
+  </div>
+
+  <div class="question-block" data-q="3">
+    <h3>How does your business currently handle purchase orders and procurement?</h3>
+    <div class="q-label">From request to approval to payment</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 3)">Fully automated with approval workflows</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 3)">Partially automated, some manual steps</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 3)">Mostly manual with email approvals</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 3)">Entirely manual, paper or spreadsheet based</button>
+    </div>
+  </div>
+
+  <div class="question-block" data-q="4">
+    <h3>How confident are you in the accuracy of your job costing and project profitability data?</h3>
+    <div class="q-label">Do you know your true margins on every project?</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 4)">Very confident, real-time visibility</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 4)">Fairly confident, but data lags behind</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 4)">Not very confident, we often find surprises</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 4)">We do not track job costing accurately</button>
+    </div>
+  </div>
+
+  <div class="question-block" data-q="5">
+    <h3>How does your team produce weekly and monthly reports?</h3>
+    <div class="q-label">Operations reports, financial summaries, board packs</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 5)">Automatically generated and distributed</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 5)">Semi-automated, some manual formatting</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 5)">Manually built in spreadsheets each time</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 5)">We do not produce regular reports</button>
+    </div>
+  </div>
+
+  <div class="question-block" data-q="6">
+    <h3>Does your business have a single source of truth for customer and project data?</h3>
+    <div class="q-label">One place where everyone gets the same numbers</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 6)">Yes, fully centralised</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 6)">Mostly, but some teams keep their own records</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 6)">No, data is spread across multiple places</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 6)">Different departments have conflicting data</button>
+    </div>
+  </div>
+
+  <div class="question-block" data-q="7">
+    <h3>Has your business explored or implemented any AI or automation tools?</h3>
+    <div class="q-label">Chatbots, automated workflows, AI-assisted analysis, etc.</div>
+    <div class="options">
+      <button class="option-btn" data-score="4" onclick="selectOption(this, 7)">Yes, actively using AI in multiple areas</button>
+      <button class="option-btn" data-score="3" onclick="selectOption(this, 7)">We have piloted one or two tools</button>
+      <button class="option-btn" data-score="2" onclick="selectOption(this, 7)">We have discussed it but not started</button>
+      <button class="option-btn" data-score="1" onclick="selectOption(this, 7)">No, AI is not on our radar yet</button>
+    </div>
+  </div>
+
+  <button class="submit-btn" id="submitBtn" onclick="calculateScore()" disabled>Get My Score</button>
+</div>
+
+<div class="results-section" id="resultsSection">
+  <div class="container">
+    <div class="score-circle">
+      <span class="score-number" id="scoreNumber">0</span>
+      <span class="score-label">out of 32</span>
+    </div>
+    <div class="score-level" id="scoreLevel"></div>
+    <p class="score-desc" id="scoreDesc"></p>
+
+    <div class="recommendations">
+      <h3>Your Top 3 Recommendations</h3>
+      <div id="recsContainer"></div>
+    </div>
+
+    <div class="cta-section">
+      <h3>Want to see what this looks like for your business?</h3>
+      <p>Book a no-obligation conversation with Benjamin Samuel. No pitch, no pressure. Just a straight talk about where AI can move the needle for your business.</p>
+      <a href="mailto:ben@ravenlabs.com.au?subject=AI%20Readiness%20Conversation&body=Hi%20Benjamin%2C%0A%0AI%20just%20completed%20the%20AI%20Readiness%20Scorecard%20and%20would%20like%20to%20discuss%20the%20results%20for%20my%20business.%0A%0AThanks" class="cta-btn">Start a Conversation</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  &copy; 2026 Raven Labs, Melbourne &mdash; AI and automation for Australian businesses
+</div>
+
+<script>
+  var answers = {};
+  var totalQuestions = 8;
+
+  function selectOption(btn, questionIndex) {
+    var block = btn.closest('.question-block');
+    var buttons = block.querySelectorAll('.option-btn');
+    buttons.forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    answers[questionIndex] = parseInt(btn.getAttribute('data-score'));
+    updateProgress();
+  }
+
+  function updateProgress() {
+    var answered = Object.keys(answers).length;
+    var industry = document.getElementById('industrySelect').value;
+    var fill = document.getElementById('progressFill');
+    var text = document.getElementById('progressText');
+    var pct = (answered / totalQuestions) * 100;
+    fill.style.width = pct + '%';
+    text.textContent = answered + ' of ' + totalQuestions + ' answered';
+    document.getElementById('submitBtn').disabled = !(answered === totalQuestions && industry !== '');
+  }
+
+  document.getElementById('industrySelect').addEventListener('change', updateProgress);
+
+  function calculateScore() {
+    var total = 0;
+    for (var key in answers) {
+      total += answers[key];
+    }
+
+    var industry = document.getElementById('industrySelect').value;
+    var industryName = industry.charAt(0).toUpperCase() + industry.slice(1);
+
+    document.getElementById('scoreNumber').textContent = total;
+
+    var level, desc, recs;
+
+    if (total >= 28) {
+      level = 'AI Ready';
+      document.querySelector('.score-level').style.color = '#00a86b';
+      desc = 'Your ' + industryName.toLowerCase() + ' business is well-positioned to implement AI and automation. Your systems are integrated, your data is accessible, and your team is already thinking about AI. The opportunity now is to accelerate.';
+      recs = [
+        { title: 'Deploy AI-Driven Reporting', text: 'Replace your remaining manual reports with automated, AI-generated insights. Your data infrastructure supports it. Target: eliminate 5-8 hours of weekly reporting effort within 60 days.' },
+        { title: 'Implement Predictive Analytics', text: 'With your integrated data, you can move from reactive to predictive. Use AI to forecast project costs, cash flow gaps, and resource needs before they become problems.' },
+        { title: 'Scale Automation Across Departments', text: 'You have proven the model in some areas. Now systematically roll out automated workflows to procurement, HR, and client communications to compound the gains.' }
+      ];
+    } else if (total >= 21) {
+      level = 'Getting There';
+      document.querySelector('.score-level').style.color = '#4a00e1';
+      desc = 'Your ' + industryName.toLowerCase() + ' business has solid foundations but gaps in integration and automation are costing you time and money. Most Australian businesses your size sit in this range. The good news: targeted improvements can deliver fast ROI.';
+      recs = [
+        { title: 'Connect Your Core Systems', text: 'Your biggest quick win is integrating your finance and operations platforms. In ' + industryName.toLowerCase() + ', this alone typically saves 10-15 hours per week of manual data handling and gives you real-time job costing visibility.' },
+        { title: 'Automate Your Purchase Order Workflow', text: 'Move from email-based approvals to automated workflows. ' + industryName + ' businesses report 40% faster procurement cycles and fewer errors when POs are automated end-to-end.' },
+        { title: 'Build a Live Reporting Dashboard', text: 'Replace the Monday morning spreadsheet scramble with a real-time dashboard. Start with your top 5 KPIs. This changes how your leadership team makes decisions.' }
+      ];
+    } else if (total >= 14) {
+      level = 'Significant Opportunity';
+      document.querySelector('.score-level').style.color = '#e6a800';
+      desc = 'Your ' + industryName.toLowerCase() + ' business is running on disconnected systems with heavy manual processes. This is common in the sector, but it means you are likely losing $1-3M annually in hidden costs from duplicate work, delayed decisions, and manual data handling.';
+      recs = [
+        { title: 'Audit Your System Landscape', text: 'Map every system your team uses daily. Identify the top 3 data flows that are manual (e.g., finance to operations, field to office). These are your highest-ROI automation targets.' },
+        { title: 'Centralise Your Data First', text: 'Before adding AI, you need a single source of truth. Start with a unified platform for finance and operations. In ' + industryName.toLowerCase() + ', this is the foundation everything else builds on.' },
+        { title: 'Quantify the Cost of Inaction', text: 'Calculate what manual data entry, delayed reports, and disconnected systems cost your business annually. For a $50M ' + industryName.toLowerCase() + ' business, this figure typically sits between $1.8M and $2.4M.' }
+      ];
+    } else {
+      level = 'Early Stage';
+      document.querySelector('.score-level').style.color = '#cc0000';
+      desc = 'Your ' + industryName.toLowerCase() + ' business has significant room for improvement in systems integration and automation. You are not alone; many ' + industryName.toLowerCase() + ' businesses in Australia are in this position. The upside is that even small changes will produce dramatic results.';
+      recs = [
+        { title: 'Start With One Integrated Platform', text: 'Do not try to fix everything at once. Pick one core business function (finance or operations) and move it onto a modern, integrated platform. This single move will change how your business operates.' },
+        { title: 'Eliminate Your Biggest Manual Bottleneck', text: 'Identify the one process that consumes the most manual hours each week. In ' + industryName.toLowerCase() + ', this is usually data entry between field and office systems. Automating this alone can free up 15-20 hours per week.' },
+        { title: 'Get a Baseline Measurement', text: 'You cannot improve what you do not measure. Track how many hours your team spends on data entry, report generation, and system switching for one month. The number will make the case for investment.' }
+      ];
+    }
+
+    document.getElementById('scoreLevel').textContent = level;
+    document.getElementById('scoreDesc').textContent = desc;
+
+    var recsHTML = '';
+    for (var i = 0; i < recs.length; i++) {
+      recsHTML += '<div class="rec-card"><h4>' + (i + 1) + '. ' + recs[i].title + '</h4><p>' + recs[i].text + '</p></div>';
+    }
+    document.getElementById('recsContainer').innerHTML = recsHTML;
+
+    document.getElementById('quizSection').style.display = 'none';
+    document.getElementById('resultsSection').style.display = 'block';
+    document.querySelector('.progress-bar').style.display = 'none';
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
