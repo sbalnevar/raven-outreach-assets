@@ -1,326 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 AI Workflows Saving 10-15 Hours Per Week | Raven Labs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 AI Workflows Saving 10-15 Hours Per Week | Raven Labs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #2c2c2c;
-            background: #f8f8f8;
-        }
+    :root {
+      --purple: #4a00e1;
+      --purple-mid: #6400E1;
+      --purple-light: #8300e2;
+      --bg: #ffffff;
+      --text: #1a1a2e;
+      --text-muted: #6b6b80;
+      --border: #e2e2ea;
+      --surface: #f7f6ff;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-        }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--text); background: #f4f4f6; }
 
-        /* Header */
-        .header-bar {
-            background: white;
-            padding: 20px 40px;
-            border-bottom: 1px solid #e8e8e8;
-            display: flex;
-            align-items: center;
-        }
+    .container { max-width: 900px; margin: 0 auto; background: var(--bg); box-shadow: 0 4px 32px rgba(74, 0, 225, 0.08); }
 
-        .logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            color: #4a00e1;
-            letter-spacing: -0.5px;
-        }
+    .header-bar { background: var(--bg); padding: 20px 40px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .logo-text { font-size: 20px; font-weight: 700; color: var(--purple); letter-spacing: -0.5px; }
+    .header-tag { font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
-        /* Gradient Hero */
-        .hero {
-            background: linear-gradient(135deg, #4a00e1 0%, #6400E1 33%, #7900E1 66%, #8300e2 100%);
-            padding: 60px 40px;
-            text-align: center;
-            color: white;
-        }
+    .hero { background: linear-gradient(135deg, #4a00e1 0%, #6400E1 33%, #7900E1 66%, #8300e2 100%); padding: 64px 40px; text-align: center; color: white; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 70%); }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 999px; margin-bottom: 1.2rem; }
+    .hero h1 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.25; letter-spacing: -0.03em; position: relative; }
+    .hero p { font-size: 14px; opacity: 0.92; max-width: 680px; margin: 0 auto; line-height: 1.7; position: relative; }
 
-        .hero h1 {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
+    .content { padding: 52px 40px; }
+    .intro-text { font-size: 14px; color: var(--text-muted); margin-bottom: 52px; line-height: 1.8; max-width: 720px; padding: 20px 24px; background: var(--surface); border-left: 4px solid var(--purple); border-radius: 0 10px 10px 0; }
 
-        .hero p {
-            font-size: 14px;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+    .workflows { display: grid; gap: 44px; margin-bottom: 52px; }
+    .workflow { border-left: 4px solid var(--purple); padding-left: 28px; position: relative; }
+    .workflow-number { position: absolute; left: -20px; top: -2px; width: 40px; height: 40px; background: linear-gradient(135deg, var(--purple), var(--purple-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 16px; box-shadow: 0 4px 16px rgba(74, 0, 225, 0.28); }
+    .workflow h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text); letter-spacing: -0.02em; }
+    .workflow p { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.75; }
 
-        /* Content Section */
-        .content {
-            padding: 50px 40px;
-        }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+    .stat { background: #fff; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--border); border-left: 3px solid var(--purple); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; margin-bottom: 4px; }
+    .stat-value { font-size: 20px; font-weight: 800; color: var(--purple); letter-spacing: -0.03em; }
 
-        .intro-text {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 50px;
-            line-height: 1.7;
-            max-width: 700px;
-        }
+    .cta-section { background: linear-gradient(135deg, rgba(74,0,225,0.05) 0%, rgba(131,0,226,0.05) 100%); border: 1px solid rgba(74, 0, 225, 0.15); padding: 44px 40px; border-radius: 16px; text-align: center; }
+    .cta-section h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: var(--text); letter-spacing: -0.03em; }
+    .cta-section p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-button { display: inline-block; background: linear-gradient(135deg, var(--purple), var(--purple-light)); color: white; padding: 14px 36px; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: -0.01em; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(74, 0, 225, 0.28); border: none; cursor: pointer; }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(74, 0, 225, 0.38); }
+    .cta-sub { display: block; margin-top: 14px; font-size: 12px; color: var(--text-muted); }
 
-        /* Workflows Grid */
-        .workflows {
-            display: grid;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
+    footer { background: var(--bg); padding: 28px 40px; text-align: center; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); }
+    footer a { color: var(--purple); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-        .workflow {
-            border-left: 4px solid #4a00e1;
-            padding-left: 24px;
-            position: relative;
-        }
-
-        .workflow-number {
-            position: absolute;
-            left: -18px;
-            top: -2px;
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, #4a00e1, #8300e2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        .workflow h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #2c2c2c;
-        }
-
-        .workflow p {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 16px;
-        }
-
-        .stat {
-            background: #f5f5f5;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid #4a00e1;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .stat-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: #4a00e1;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #f5f5f5, #fafafa);
-            padding: 40px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .cta-section h2 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #2c2c2c;
-        }
-
-        .cta-section p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #4a00e1, #8300e2);
-            color: white;
-            padding: 12px 32px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(74, 0, 225, 0.3);
-        }
-
-        /* Footer */
-        .footer {
-            background: #f8f8f8;
-            padding: 30px 40px;
-            text-align: center;
-            border-top: 1px solid #e8e8e8;
-            font-size: 12px;
-            color: #888;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .container {
-                margin: 0;
-                box-shadow: none;
-            }
-
-            .header-bar {
-                padding: 16px 24px;
-            }
-
-            .hero {
-                padding: 40px 24px;
-            }
-
-            .hero h1 {
-                font-size: 22px;
-            }
-
-            .content {
-                padding: 32px 24px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section {
-                padding: 28px 24px;
-            }
-
-            .footer {
-                padding: 20px 24px;
-                font-size: 11px;
-            }
-        }
-    </style>
+    @media (max-width: 640px) {
+      .container { margin: 0; box-shadow: none; }
+      .header-bar { padding: 16px 24px; }
+      .header-tag { display: none; }
+      .hero { padding: 44px 24px; }
+      .content { padding: 36px 24px; }
+      .stats { grid-template-columns: 1fr; }
+      .cta-section { padding: 32px 24px; }
+      footer { padding: 20px 24px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header-bar">
-            <div class="logo-text">Raven Labs</div>
+
+<div class="container">
+
+  <div class="header-bar">
+    <div class="logo-text">Raven Labs</div>
+    <div class="header-tag">Manufacturing &amp; Production</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-badge">AI Workflow Report</div>
+    <h1>3 AI Workflows Saving<br>10–15 Hours Per Week</h1>
+    <p>Eliminate manual inventory reconciliation, automate production scheduling, and stop reactive quality management before defects reach your customers.</p>
+  </div>
+
+  <div class="content">
+
+    <p class="intro-text">
+      Manufacturing operations managers lose hours every week to manual stock counts, production scheduling conflicts, and quality control paperwork. These three AI workflows remove that friction — giving your floor managers real-time visibility and your leadership team accurate data without the admin overhead.
+    </p>
+
+    <div class="workflows">
+
+      <div class="workflow">
+        <div class="workflow-number">1</div>
+        <h3>Automated Inventory &amp; Stock Reconciliation</h3>
+        <p>Raw materials, WIP, and finished goods are tracked in real time across your floor. AI flags reorder points, identifies slow-moving stock, and reconciles physical counts against your ERP — without the Monday morning spreadsheet run.</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">Time Saved Weekly</div>
+            <div class="stat-value">4–5 hrs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Stock Accuracy</div>
+            <div class="stat-value">99.4%</div>
+          </div>
         </div>
+      </div>
 
-        <!-- Hero -->
-        <div class="hero">
-            <h1>3 AI Workflows Saving 10-15 Hours Per Week</h1>
-            <p>Automate production scheduling, machine downtime tracking, quality documentation, inventory management, and supply chain visibility across your operations.</p>
+      <div class="workflow">
+        <div class="workflow-number">2</div>
+        <h3>AI-Optimised Production Scheduling &amp; Capacity Planning</h3>
+        <p>Customer orders, machine capacity, and material availability are balanced automatically. Schedule conflicts and bottlenecks are flagged before they cause delays — keeping on-time delivery rates high without constant manual intervention.</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">Time Saved Weekly</div>
+            <div class="stat-value">3–5 hrs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">On-Time Delivery</div>
+            <div class="stat-value">+22%</div>
+          </div>
         </div>
+      </div>
 
-        <!-- Content -->
-        <div class="content">
-            <p class="intro-text">
-                Manufacturing operations teams spend hours managing production schedules, quality records, downtime reports, and inventory reconciliation across systems. These three AI workflows centralise operational data, predict equipment failures, and streamline compliance documentation—enabling your team to optimise throughput and reduce unplanned downtime.
-            </p>
-
-            <div class="workflows">
-                <!-- Workflow 1 -->
-                <div class="workflow">
-                    <div class="workflow-number">1</div>
-                    <h3>Automated Production Scheduling & Downtime Logging</h3>
-                    <p>Production schedules are optimised based on orders, machine capacity, and maintenance windows. Machine downtime is automatically logged from sensor data, operator notes, and work orders. Root cause analysis replaces guesswork—identifying patterns that accelerate corrective action.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-label">Time Saved Weekly</div>
-                            <div class="stat-value">4–5 hrs</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-label">Schedule Accuracy</div>
-                            <div class="stat-value">96.2%</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Workflow 2 -->
-                <div class="workflow">
-                    <div class="workflow-number">2</div>
-                    <h3>Quality Control Documentation & Compliance Automation</h3>
-                    <p>Inspection records, test results, and non-conformance reports are auto-populated from lab systems and SCADA feeds. Audit trails are generated automatically. Compliance evidence is ready on demand—no scrambling at audit time.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-label">Time Saved Weekly</div>
-                            <div class="stat-value">3–4 hrs</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-label">Audit Readiness</div>
-                            <div class="stat-value">100%</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Workflow 3 -->
-                <div class="workflow">
-                    <div class="workflow-number">3</div>
-                    <h3>Real-Time Inventory & Supply Chain Visibility</h3>
-                    <p>Stock levels, supplier deliveries, and component consumption are automatically reconciled. Inventory forecasts surface shortages before production stalls. Supplier performance is tracked without manual data collection—enabling just-in-time ordering and reduced working capital.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-label">Time Saved Weekly</div>
-                            <div class="stat-value">2–3 hrs</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-label">Stock Accuracy</div>
-                            <div class="stat-value">97.8%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="cta-section">
-                <h2>See How It Works</h2>
-                <p>Let's discuss how these workflows improve OEE, reduce downtime, and streamline compliance across your facility.</p>
-                <a href="mailto:ben@ravenlabs.com.au" class="cta-button">Start the Conversation</a>
-            </div>
+      <div class="workflow">
+        <div class="workflow-number">3</div>
+        <h3>Quality Control &amp; Non-Conformance Reporting</h3>
+        <p>Inspection data, defect patterns, and non-conformance reports are automatically captured and analysed. Root causes are surfaced before problems repeat. Compliance documentation is generated and audit-ready at all times.</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-label">Time Saved Weekly</div>
+            <div class="stat-value">2–4 hrs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Defect Recurrence</div>
+            <div class="stat-value">–45%</div>
+          </div>
         </div>
+      </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            © 2026 Raven Labs, Melbourne
-        </div>
     </div>
+
+    <div class="cta-section">
+      <h2>See How It Works</h2>
+      <p>Let's discuss how these workflows fit your production environment and scale across your team. Book a free 15-minute call with Ben.</p>
+      <a href="https://calendly.com/ben-ravenlabs/30min" target="_blank" rel="noopener" class="cta-button">Book a Free 15-Min Call</a>
+      <span class="cta-sub">No commitment &mdash; just a practical conversation about your workflow</span>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 Raven Labs &mdash; Melbourne &amp; Sydney &nbsp;|&nbsp; <a href="https://theravenlabs.com">theravenlabs.com</a>
+  </footer>
+
+</div>
+
 </body>
 </html>
