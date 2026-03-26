@@ -618,6 +618,326 @@
 
     .footer-logo span { color: var(--purple-light); }
 
+    /* ─── WEBSITE CONTENT SECTIONS ─── */
+    .site-content {
+      border-top: 1px solid var(--border);
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--purple);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* Three tiers */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .tier-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .tier-card:hover {
+      box-shadow: 0 8px 28px rgba(74,0,225,0.1);
+      transform: translateY(-2px);
+    }
+
+    .tier-card.featured {
+      border-color: rgba(74,0,225,0.35);
+      background: var(--surface);
+    }
+
+    .tier-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      background: rgba(74,0,225,0.08);
+      color: var(--purple);
+      border: 1px solid rgba(74,0,225,0.18);
+    }
+
+    .tier-tag.free {
+      background: rgba(0,168,120,0.08);
+      color: var(--success);
+      border-color: rgba(0,168,120,0.22);
+    }
+
+    .tier-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .tier-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .tier-outcome {
+      background: rgba(74,0,225,0.04);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .tier-outcome strong {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    /* Divider */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* What's included */
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .included-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 18px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .included-icon {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: rgba(74,0,225,0.08);
+      border: 1px solid rgba(74,0,225,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .included-icon svg { stroke: var(--purple); }
+
+    .included-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* Contact form */
+    .contact-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-left .section-subtitle { margin-bottom: 0; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-field label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      width: 100%;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(74,0,225,0.08);
+    }
+
+    .form-field textarea { resize: vertical; min-height: 100px; }
+
+    .btn-form-submit {
+      background: linear-gradient(135deg, var(--purple), var(--purple-light));
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(74,0,225,0.26);
+      align-self: flex-start;
+    }
+
+    .btn-form-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 26px rgba(74,0,225,0.36); }
+
+    /* Full footer */
+    .footer-full {
+      background: var(--text);
+      color: rgba(255,255,255,0.55);
+      padding: 60px 40px 32px;
+      font-size: 13px;
+    }
+
+    .footer-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand-logo span { color: var(--purple-light); }
+
+    .footer-brand-desc {
+      font-size: 12px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .footer-contact-line {
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .footer-contact-line a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .footer-contact-line a:hover { color: white; }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    .footer-bottom {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 11px;
+    }
+
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-bottom a:hover { color: white; }
+
+    @media (max-width: 768px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-full { padding: 44px 20px 24px; }
+    }
+
     /* ─── DESIGN NOTES BANNER ─── */
     .design-notes {
       background: #fff3cd;
@@ -994,10 +1314,202 @@
 
 </div>
 
+<!-- WEBSITE CONTENT (below quiz) -->
+<div class="site-content">
+
+  <!-- THREE-TIER SERVICE MODEL -->
+  <div class="section">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">Make AI Readiness Your Competitive Advantage</h2>
+    <p class="section-subtitle">See your journey in clear milestones, and focus on outcomes at every step.</p>
+    <div class="tiers-grid">
+
+      <div class="tier-card">
+        <div class="tier-tag free">Free</div>
+        <div class="tier-title">Discovery Sprint</div>
+        <div class="tier-desc">A focused workshop to assess your current state and identify AI opportunities across your business.</div>
+        <div class="tier-outcome">
+          <strong>Outcome</strong>
+          Clarity on where you stand &amp; a shortlist of actionable AI use-cases
+        </div>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="tier-tag">Deep Dive</div>
+        <div class="tier-title">Readiness Assessment</div>
+        <div class="tier-desc">Deep-dive into your organisation's AI preparedness across all key domains — people, process, data, and technology.</div>
+        <div class="tier-outcome">
+          <strong>Outcome</strong>
+          Identified technical and process gaps with prioritised focus areas
+        </div>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-tag">Strategic</div>
+        <div class="tier-title">Strategic Roadmap</div>
+        <div class="tier-desc">A tailored path to AI adoption and true value realisation, built around your business objectives and timeline.</div>
+        <div class="tier-outcome">
+          <strong>Outcome</strong>
+          A milestone-based implementation plan and business success metrics
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- WHAT'S INCLUDED -->
+  <div class="section">
+    <div class="section-label">What You Get</div>
+    <h2 class="section-title">Everything You Need to Move Forward with Confidence</h2>
+    <p class="section-subtitle">Every assessment engagement includes full support from discovery through to implementation guidance.</p>
+    <div class="included-grid">
+
+      <div class="included-item">
+        <div class="included-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="included-text">Comprehensive AI readiness assessment across all key domains</div>
+      </div>
+
+      <div class="included-item">
+        <div class="included-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="included-text">Strategic roadmap with clear milestones and success metrics</div>
+      </div>
+
+      <div class="included-item">
+        <div class="included-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="included-text">Tailored implementation plan based on your organisation's specific needs</div>
+      </div>
+
+      <div class="included-item">
+        <div class="included-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="included-text">Regular progress check-ins and adjustment of strategy as needed</div>
+      </div>
+
+      <div class="included-item">
+        <div class="included-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="included-text">Full documentation and knowledge transfer to your team</div>
+      </div>
+
+      <div class="included-item">
+        <div class="included-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="included-text">Priority access to our implementation specialists</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /site-content -->
+
+<!-- CONTACT FORM -->
+<div class="contact-section">
+  <div class="contact-inner">
+
+    <div class="contact-left">
+      <div class="section-label">Request for Services</div>
+      <h2 class="section-title">Get a Free Audit Report</h2>
+      <p class="section-subtitle">Discover how we can empower your organisation to move forward. Tell us what matters most to you, and we'll personalise our approach to serve you better.</p>
+    </div>
+
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <label>Company</label>
+          <input type="text" placeholder="Your company">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-field">
+          <label>Phone</label>
+          <input type="tel" placeholder="+61 000 000 000">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your business and what you're looking to achieve with AI..."></textarea>
+      </div>
+      <button type="submit" class="btn-form-submit">Send Request</button>
+    </form>
+
+  </div>
+</div>
+
 <!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Raven<span>Labs</span></div>
-  <p>&copy; 2026 Raven Labs &mdash; Melbourne &amp; Sydney, Australia &nbsp;|&nbsp; <a href="https://www.theravenlabs.com">theravenlabs.com</a></p>
+<footer class="footer-full">
+  <div class="footer-grid">
+
+    <div>
+      <div class="footer-brand-logo">Raven<span>Labs</span></div>
+      <p class="footer-brand-desc">Helping organisations navigate their AI journey with clarity and confidence.</p>
+      <div class="footer-contact-line"><a href="tel:1300305009">1300 305 009</a></div>
+      <div class="footer-contact-line"><a href="mailto:info@ravenlabs.com.au">info@ravenlabs.com.au</a></div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">AI Readiness Assessment</a></li>
+        <li><a href="#">Business Intelligence</a></li>
+        <li><a href="#">CRM</a></li>
+        <li><a href="#">ERP</a></li>
+        <li><a href="#">Digital Marketing</a></li>
+        <li><a href="#">AI Integration</a></li>
+        <li><a href="#">Managed IT Support</a></li>
+        <li><a href="#">Web Development</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#">Knowledge Base</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Offices</div>
+      <ul class="footer-links">
+        <li><a href="#">Melbourne, VIC AU<br>1300 305 009</a></li>
+        <li><a href="#">Hyderabad, TS IND<br>+91 99481 31956</a></li>
+        <li><a href="#">Gaithersburg, MD USA<br>+1 205 413 4174</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Raven Labs. All rights reserved.</span>
+    <span>
+      <a href="#">Privacy</a> &nbsp;&middot;&nbsp;
+      <a href="#">Terms</a> &nbsp;&middot;&nbsp;
+      <a href="https://www.theravenlabs.com">theravenlabs.com</a>
+    </span>
+  </div>
 </footer>
 
 <script>
